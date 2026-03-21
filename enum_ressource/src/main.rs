@@ -47,26 +47,20 @@ fn value_in_cents(coin: Coin) -> u8 {
 }
 
 fn describe_state_quarter(coin: Coin) -> Option<String> {
-    let Coin::Quarter(state) = coin else {
-        return None;
-    };
-
-    if state.existed_in(1900) {
-        Some(format!("{state:?} is pretty old, for America!"))
+    if let Coin::Quarter(state) = coin {
+        if state.existed_in(1900) {
+            Some(format!("{state:?} is pretty old, for America!"))
+        } else {
+            Some(format!("{state:?} is relatively new."))
+        }
     } else {
-        Some(format!("{state:?} is relatively new."))
+        None
     }
 }
 
-
 fn main() {
 
-    let mut count = 0;
-    if let Coin::Quarter(state) = Coin {
-        println!("State quarter from {state:?}!");
-    } else {
-        count += 1;
-    }
+    describe_state_quarter(Coin::Quarter(UsState::Alaska));
 
     let home = IpAddr::V4(127, 0, 0, 1);
 
