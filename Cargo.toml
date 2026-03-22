@@ -1,5 +1,6 @@
 [workspace]
-members = [
+resolver = "3"
+members = ["collection",
     "enum_ressource",
     "function",
     "guessing_game",
@@ -7,4 +8,5 @@ members = [
     "restaurant",
     "struct",
     "variables",
+    "collection",
 ]
